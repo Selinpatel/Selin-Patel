@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selin Patel | Commercial Drywall Estimator</title>
+    <title>Selin Patel | Commercial Estimator</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
         :root {
-            --primary-navy: #0f172a; /* Deeper Slate */
-            --construct-blue: #2563eb; /* Bright, strong construction blue */
-            --safety-accent: #f59e0b; /* Safety Amber/Gold for contrast */
-            --bg-light: #fdfdfd;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --blueprint-grid: rgba(37, 99, 235, 0.03); /* Subtle grid lines */
+            --bg-base: #0a0a0a;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ededed;
+            --text-muted: #a1a1aa;
+            --accent-blue: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.5);
         }
 
         * {
@@ -24,418 +24,359 @@
             font-family: 'Inter', sans-serif;
         }
 
-        html {
-            scroll-behavior: smooth;
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        body {
-            background-color: var(--bg-light);
-            /* Aesthetic Blueprint Grid Pattern */
-            background-image: 
-                linear-gradient(var(--blueprint-grid) 1px, transparent 1px),
-                linear-gradient(90deg, var(--blueprint-grid) 1px, transparent 1px);
-            background-size: 30px 30px;
-            color: var(--text-main);
-            line-height: 1.7;
+        /* Vercel-style Glowing Background Effect */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -10%; left: 50%;
+            transform: translateX(-50%);
+            width: 80vw; height: 60vh;
+            background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.15), transparent 60%);
+            z-index: -1;
+            pointer-events: none;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 850px;
             margin: 0 auto;
-            padding: 0 25px;
+            padding: 0 24px;
         }
 
-        /* ----- Keyframe Animations ----- */
-        @keyframes subtlePan {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; }
+        /* Smooth Reveal Animation */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes revealLift {
-            from { opacity: 0; transform: translateY(40px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+        .animate-up {
+            opacity: 0;
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.5s; }
+        .delay-4 { animation-delay: 0.7s; }
 
-        /* ----- Header / Hero (Aesthetic Construction Animation) ----- */
+        /* ----- Header ----- */
         header {
-            background-color: var(--primary-navy);
-            color: white;
-            padding: 100px 0;
+            padding: 120px 0 80px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 6px solid var(--construct-blue);
-        }
-
-        /* Construction image with aesthetic moving animation */
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 200%; height: 200%;
-            /* High-aesthetic construction pattern (scaffolding/structure vibe) */
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48ZyBmaWxsPSIlMjNjZGM1ZTEiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTAgMGg0MHY0MEgwVjB6bTQwIDQwaDQwdjQwSDQwVjQwek0wIDQwaDQwVjhIMFY0MHpNODAgMGg0MHY0MEg4MFYweiIvPjwvZz48L3N2Zz4=');
-            opacity: 0.8;
-            animation: subtlePan 120s linear infinite; /* Aesthetic, slow movement */
-            z-index: 1;
-        }
-
-        /* Dark overlay for text legibility */
-        header::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, rgba(15,23,42,0.6) 0%, rgba(15,23,42,0.9) 100%);
-            z-index: 2;
-        }
-
-        header .container {
-            position: relative;
-            z-index: 3; /* Keeps text above animations */
-            animation: revealLift 1s ease-out;
         }
 
         header h1 {
-            font-family: 'Oswald', sans-serif; /* Stronger font for construction vibe */
             font-size: 3.5rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            background: linear-gradient(to right, #ffffff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
         }
 
         header h2 {
-            font-size: 1.4rem;
-            font-weight: 300;
-            color: #cbd5e1;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            letter-spacing: 0.5px;
         }
 
-        .contact-info a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            border: 2px solid var(--construct-blue);
-            padding: 12px 30px;
-            border-radius: 4px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+        .btn {
             display: inline-block;
-            background-color: rgba(37, 99, 235, 0.1);
+            background: var(--text-main);
+            color: var(--bg-base);
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 99px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 20px rgba(255,255,255,0.1);
         }
 
-        .contact-info a:hover {
-            background-color: var(--construct-blue);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
-            border-color: transparent;
+        .btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(255,255,255,0.2);
+            background: white;
         }
 
-        /* ----- Sections & Aesthetic Reveal ----- */
+        /* ----- Sections & Glass Cards ----- */
         section {
-            padding: 80px 0;
-            border-bottom: 1px solid #f1f5f9;
-            opacity: 0; /* Hidden initially for animation */
-            animation: revealLift 1s ease-out forwards;
+            margin-bottom: 80px;
         }
-
-        /* Staggered load effect (each section arrives slightly later) */
-        section:nth-of-type(1) { animation-delay: 0.2s; }
-        section:nth-of-type(2) { animation-delay: 0.4s; }
-        section:nth-of-type(3) { animation-delay: 0.6s; }
-        section:nth-of-type(4) { animation-delay: 0.8s; }
 
         h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 2rem;
-            color: var(--primary-navy);
-            margin-bottom: 35px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            display: inline-block;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        h3::after {
+        h3::before {
             content: '';
-            position: absolute;
-            left: 0;
-            bottom: -8px;
-            width: 60px;
-            height: 4px;
-            background-color: var(--construct-blue);
+            display: block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--accent-blue);
+            box-shadow: 0 0 10px var(--accent-glow);
         }
 
-        /* Summary */
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 30px;
+            transition: border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
         .summary p {
-            font-size: 1.2rem;
-            color: #334155;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
             font-weight: 300;
         }
 
-        /* Skills (Aesthetic Card Grid) */
+        /* Skills Grid */
         .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        .skill-item {
-            background: white;
-            padding: 18px 25px;
-            border-radius: 4px;
-            border: 1px solid #e2e8f0;
-            border-left: 5px solid #cbd5e1;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            color: #1e293b;
+        .skill-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 99px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: all 0.2s;
         }
 
-        .skill-item:hover {
-            transform: translateX(8px);
-            border-left-color: var(--construct-blue);
-            background-color: #fafafa;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.04);
+        .skill-pill:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: var(--accent-blue);
+            color: #fff;
         }
 
-        /* Experience (Modern Card Style) */
+        /* Experience */
         .job {
-            background: white;
-            padding: 40px;
-            border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            margin-bottom: 30px;
-            border: 1px solid #f1f5f9;
-            position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .job:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            margin-bottom: 20px;
         }
 
         .job-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            gap: 15px;
+            align-items: center;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .job-title {
-            font-size: 1.5rem;
-            color: var(--primary-navy);
-            font-weight: 700;
-            line-height: 1.2;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-main);
         }
 
         .job-date {
-            color: var(--construct-blue);
-            font-weight: 600;
-            font-size: 1rem;
-            white-space: nowrap;
-            background-color: #eff6ff;
-            padding: 6px 16px;
-            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: monospace;
+            background: rgba(255,255,255,0.05);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--card-border);
         }
 
         .job-location {
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-            display: block;
-            text-transform: uppercase;
+            color: var(--accent-blue);
             font-size: 0.9rem;
-            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: block;
+            font-weight: 500;
         }
 
         .job ul {
-            list-style-type: none;
+            list-style: none;
         }
 
         .job ul li {
+            color: var(--text-muted);
             margin-bottom: 12px;
+            font-size: 0.95rem;
+            padding-left: 20px;
             position: relative;
-            padding-left: 28px;
-            color: #334155;
-            font-weight: 400;
         }
 
-        /* Construction Bullet Point icon */
         .job ul li::before {
-            content: '';
+            content: '→';
             position: absolute;
             left: 0;
-            top: 6px;
-            width: 12px;
-            height: 12px;
-            background-color: transparent;
-            border: 3px solid #cbd5e1;
-            transform: rotate(45deg);
-            transition: all 0.3s ease;
-        }
-
-        .job:hover ul li::before {
-            border-color: var(--construct-blue);
-            background-color: var(--construct-blue);
+            color: rgba(255,255,255,0.2);
+            font-family: monospace;
         }
 
         /* Education */
         .edu-item {
-            background: white;
-            padding: 25px;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            border: 1px solid #e2e8f0;
-            border-left: 5px solid var(--primary-navy);
-            transition: all 0.3s ease;
-        }
-        
-        .edu-item:hover {
-            border-left-color: var(--safety-accent);
-            transform: translateX(5px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--card-border);
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .edu-item strong {
-            display: block;
-            font-size: 1.25rem;
-            color: var(--primary-navy);
-            margin-bottom: 5px;
+        .edu-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
         }
 
-        /* Footer */
+        .edu-title {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .edu-school {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
         footer {
             text-align: center;
-            padding: 50px 0;
-            color: var(--text-muted);
-            font-size: 1rem;
-            border-top: 1px solid #f1f5f9;
-            background-color: #f8fafc;
+            padding: 40px 0 60px;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--card-border);
         }
 
-        /* ----- Responsive / Mobile Optimization ----- */
-        @media (max-width: 768px) {
-            header { padding: 80px 0; }
-            header h1 { font-size: 2.6rem; letter-spacing: 1px; }
-            section { padding: 60px 0; }
-            .job { padding: 25px; }
-            .job-header { flex-direction: column; gap: 8px; }
-            .job-date { padding: 0; background: transparent; color: var(--construct-blue); }
-            h3 { font-size: 1.7rem; }
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.5rem; }
+            .job-header { flex-direction: column; align-items: flex-start; }
+            .edu-item { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
 
-    <header>
+    <header class="animate-up">
         <div class="container">
-            <h1>SELIN PATEL</h1>
+            <h1>Selin Patel</h1>
             <h2>Commercial Drywall Estimator</h2>
-            <div class="contact-info">
-                <a href="mailto:selinpatel1998@gmail.com">Request Proposal</a>
-            </div>
+            <a href="mailto:selinpatel1998@gmail.com" class="btn">Get in touch</a>
         </div>
     </header>
 
     <div class="container">
         
-        <section class="summary">
-            <h3>Professional Summary</h3>
-            <p>Commercial Drywall Estimator with 2+ years of experience in Division 9 scopes, including drywall, metal framing, insulation, ACT, and finishes. Proven ability to perform accurate quantity takeoffs, prepare competitive bids, and manage multiple projects in fast-paced environments. Experienced with On-Screen Takeoff, Quick Bid, and BuzzBid, with strong knowledge of construction drawings, specifications, and bid processes. Background in both estimating and field coordination, ensuring practical and cost-effective project execution.</p>
-        </section>
-
-        <section class="skills">
-            <h3>Core Skills</h3>
-            <div class="skills-grid">
-                <div class="skill-item">Division 9 Estimating</div>
-                <div class="skill-item">Quantity Takeoffs & Cost Estimation</div>
-                <div class="skill-item">On-Screen Takeoff, Quick Bid, BuzzBid</div>
-                <div class="skill-item">Labor Costing & Production Rates</div>
-                <div class="skill-item">Bid Management & RFIs</div>
-                <div class="skill-item">Construction Drawings & Specs</div>
-                <div class="skill-item">Vendor Pricing & Coordination</div>
-                <div class="skill-item">Budget Tracking & Cost Control</div>
-                <div class="skill-item">Microsoft Excel</div>
+        <section class="animate-up delay-1">
+            <h3>About</h3>
+            <div class="glass-card summary">
+                <p>Commercial Drywall Estimator with 2+ years of experience in Division 9 scopes, including drywall, metal framing, insulation, ACT, and finishes. Proven ability to perform accurate quantity takeoffs, prepare competitive bids, and manage multiple projects in fast-paced environments. Experienced with On-Screen Takeoff, Quick Bid, and BuzzBid, ensuring practical and cost-effective project execution.</p>
             </div>
         </section>
 
-        <section class="experience">
-            <h3>Professional Experience</h3>
+        <section class="animate-up delay-2">
+            <h3>Expertise</h3>
+            <div class="skills-grid">
+                <span class="skill-pill">Division 9 Estimating</span>
+                <span class="skill-pill">Quantity Takeoffs</span>
+                <span class="skill-pill">On-Screen Takeoff (OST)</span>
+                <span class="skill-pill">Quick Bid</span>
+                <span class="skill-pill">BuzzBid</span>
+                <span class="skill-pill">Labor Costing</span>
+                <span class="skill-pill">Bid Management</span>
+                <span class="skill-pill">Microsoft Excel</span>
+            </div>
+        </section>
+
+        <section class="animate-up delay-3">
+            <h3>Experience</h3>
             
-            <div class="job">
+            <div class="glass-card job">
                 <div class="job-header">
                     <span class="job-title">Drywall Estimator</span>
-                    <span class="job-date">Jan 2025 – Jan 2026</span>
+                    <span class="job-date">Jan 2025 — Jan 2026</span>
                 </div>
                 <span class="job-location">Florida</span>
                 <ul>
-                    <li>Prepared detailed quantity takeoffs for drywall, metal framing, insulation, ACT, stucco, and painting scopes</li>
-                    <li>Developed accurate cost estimates using OST, Quick Bid, and BuzzBid</li>
-                    <li>Managed multiple bids simultaneously under tight deadlines</li>
-                    <li>Reviewed construction drawings and specifications to define complete project scope</li>
-                    <li>Generated and tracked RFIs, addenda, and scope revisions during bidding process</li>
-                    <li>Applied labor production rates to ensure consistent and competitive pricing</li>
-                    <li>Assisted in bid submissions and scope clarifications with project teams</li>
-                    <li>Tracked estimated vs. actual costs to support project cost control</li>
+                    <li>Prepared detailed quantity takeoffs for drywall, metal framing, insulation, ACT, stucco, and painting scopes.</li>
+                    <li>Developed accurate cost estimates using OST, Quick Bid, and BuzzBid.</li>
+                    <li>Managed multiple bids simultaneously under tight deadlines.</li>
+                    <li>Generated and tracked RFIs, addenda, and scope revisions during the bidding process.</li>
                 </ul>
             </div>
 
-            <div class="job">
+            <div class="glass-card job">
                 <div class="job-header">
                     <span class="job-title">Flooring Estimator</span>
-                    <span class="job-date">Apr 2023 – Oct 2024</span>
+                    <span class="job-date">Apr 2023 — Oct 2024</span>
                 </div>
                 <span class="job-location">Opler Floorings, Florida</span>
                 <ul>
-                    <li>Prepared material takeoffs and cost estimates for commercial flooring projects</li>
-                    <li>Coordinated with vendors and suppliers to obtain competitive pricing</li>
-                    <li>Maintained organized documentation of bids, quotes, and revisions</li>
+                    <li>Prepared material takeoffs and cost estimates for commercial flooring projects.</li>
+                    <li>Coordinated with vendors and suppliers to obtain competitive pricing.</li>
                 </ul>
             </div>
 
-            <div class="job">
+            <div class="glass-card job">
                 <div class="job-header">
                     <span class="job-title">Project Manager</span>
-                    <span class="job-date">Jan 2021 – Jan 2023</span>
+                    <span class="job-date">Jan 2021 — Jan 2023</span>
                 </div>
                 <span class="job-location">Samruddhi Builders, India</span>
                 <ul>
-                    <li>Managed daily site operations ensuring work aligned with drawings and specifications</li>
-                    <li>Supervised subcontractors, labor, and site engineers</li>
-                    <li>Coordinated material procurement and tracked project progress</li>
-                    <li>Reviewed BOQs and drawings to support project execution</li>
-                    <li>Monitored costs, verified subcontractor billing, and controlled expenses</li>
-                    <li>Maintained project documentation, reports, and compliance standards</li>
+                    <li>Managed daily site operations ensuring work aligned with drawings and specifications.</li>
+                    <li>Supervised subcontractors, labor, and site engineers.</li>
+                    <li>Monitored costs, verified subcontractor billing, and controlled expenses.</li>
                 </ul>
             </div>
         </section>
 
-        <section class="education">
-            <h3>Education & Certifications</h3>
-            <div class="edu-item">
-                <strong>MBA in Finance</strong>
-                Indira Institute of Management, India
-            </div>
-            <div class="edu-item">
-                <strong>B.Com</strong>
-                BYK College of Commerce, India
-            </div>
-            <div class="edu-item">
-                <strong>OSHA 30-Hour Construction Safety</strong>
-                Certification
+        <section class="animate-up delay-4">
+            <h3>Education</h3>
+            <div class="glass-card">
+                <div class="edu-item">
+                    <div class="edu-title">MBA in Finance</div>
+                    <div class="edu-school">Indira Institute of Management, India</div>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-title">Bachelor of Commerce</div>
+                    <div class="edu-school">BYK College of Commerce, India</div>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-title">OSHA 30-Hour Construction Safety</div>
+                    <div class="edu-school">Certification</div>
+                </div>
             </div>
         </section>
 
     </div>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Selin Patel. Commercial Drywall Estimating Services.</p>
-        </div>
+        <p>&copy; 2026 Selin Patel. Built with modern web standards.</p>
     </footer>
 
 </body>
