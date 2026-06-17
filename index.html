@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selin Patel | Commercial Drywall Estimator</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@500&display=swap');
 
         :root {
-            --primary-color: #0f172a; /* Deeper Slate */
-            --secondary-color: #3b82f6; /* Bright Professional Blue */
-            --bg-color: #f8fafc; /* Very Light Blue-Gray */
-            --text-main: #334155;
-            --text-light: #64748b;
+            --primary-navy: #0f172a; /* Deeper Slate */
+            --construct-blue: #2563eb; /* Bright, strong construction blue */
+            --safety-accent: #f59e0b; /* Safety Amber/Gold for contrast */
+            --bg-light: #fdfdfd;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --blueprint-grid: rgba(37, 99, 235, 0.03); /* Subtle grid lines */
         }
 
         * {
@@ -27,7 +29,12 @@
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: var(--bg-light);
+            /* Aesthetic Blueprint Grid Pattern */
+            background-image: 
+                linear-gradient(var(--blueprint-grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--blueprint-grid) 1px, transparent 1px);
+            background-size: 30px 30px;
             color: var(--text-main);
             line-height: 1.7;
         }
@@ -35,163 +42,215 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 25px;
         }
 
-        /* Fade In Animation */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* ----- Keyframe Animations ----- */
+        @keyframes subtlePan {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
         }
 
-        /* Header / Hero Section */
+        @keyframes revealLift {
+            from { opacity: 0; transform: translateY(40px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* ----- Header / Hero (Aesthetic Construction Animation) ----- */
         header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #1e293b 100%);
+            background-color: var(--primary-navy);
             color: white;
-            padding: 80px 0;
+            padding: 100px 0;
             text-align: center;
-            border-bottom: 5px solid var(--secondary-color);
-            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 6px solid var(--construct-blue);
+        }
+
+        /* Construction image with aesthetic moving animation */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 200%; height: 200%;
+            /* High-aesthetic construction pattern (scaffolding/structure vibe) */
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48ZyBmaWxsPSIlMjNjZGM1ZTEiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTAgMGg0MHY0MEgwVjB6bTQwIDQwaDQwdjQwSDQwVjQwek0wIDQwaDQwVjhIMFY0MHpNODAgMGg0MHY0MEg4MFYweiIvPjwvZz48L3N2Zz4=');
+            opacity: 0.8;
+            animation: subtlePan 120s linear infinite; /* Aesthetic, slow movement */
+            z-index: 1;
+        }
+
+        /* Dark overlay for text legibility */
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, rgba(15,23,42,0.6) 0%, rgba(15,23,42,0.9) 100%);
+            z-index: 2;
+        }
+
+        header .container {
+            position: relative;
+            z-index: 3; /* Keeps text above animations */
+            animation: revealLift 1s ease-out;
         }
 
         header h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: -0.5px;
+            font-family: 'Oswald', sans-serif; /* Stronger font for construction vibe */
+            font-size: 3.5rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            color: #ffffff;
         }
 
         header h2 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 300;
-            color: #94a3b8;
-            margin-bottom: 25px;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
         }
 
         .contact-info a {
             color: white;
             text-decoration: none;
             font-size: 1.1rem;
-            border: 2px solid var(--secondary-color);
-            padding: 10px 24px;
-            border-radius: 30px;
+            border: 2px solid var(--construct-blue);
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            letter-spacing: 1px;
             transition: all 0.3s ease;
             display: inline-block;
+            background-color: rgba(37, 99, 235, 0.1);
         }
 
         .contact-info a:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            background-color: var(--construct-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+            border-color: transparent;
         }
 
-        /* Sections */
+        /* ----- Sections & Aesthetic Reveal ----- */
         section {
-            padding: 60px 0;
-            border-bottom: 1px solid #e2e8f0;
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0; /* Starts hidden for animation */
+            padding: 80px 0;
+            border-bottom: 1px solid #f1f5f9;
+            opacity: 0; /* Hidden initially for animation */
+            animation: revealLift 1s ease-out forwards;
         }
 
-        section:nth-child(1) { animation-delay: 0.2s; }
-        section:nth-child(2) { animation-delay: 0.4s; }
-        section:nth-child(3) { animation-delay: 0.6s; }
-        section:nth-child(4) { animation-delay: 0.8s; }
+        /* Staggered load effect (each section arrives slightly later) */
+        section:nth-of-type(1) { animation-delay: 0.2s; }
+        section:nth-of-type(2) { animation-delay: 0.4s; }
+        section:nth-of-type(3) { animation-delay: 0.6s; }
+        section:nth-of-type(4) { animation-delay: 0.8s; }
 
         h3 {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            margin-bottom: 25px;
-            letter-spacing: 0.5px;
-            display: inline-block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-navy);
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             position: relative;
+            display: inline-block;
         }
 
         h3::after {
             content: '';
             position: absolute;
             left: 0;
-            bottom: -5px;
-            width: 40px;
-            height: 3px;
-            background-color: var(--secondary-color);
-            border-radius: 2px;
+            bottom: -8px;
+            width: 60px;
+            height: 4px;
+            background-color: var(--construct-blue);
         }
 
         /* Summary */
         .summary p {
-            font-size: 1.15rem;
-            color: #475569;
+            font-size: 1.2rem;
+            color: #334155;
+            font-weight: 300;
         }
 
-        /* Skills Grid */
+        /* Skills (Aesthetic Card Grid) */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 15px;
         }
 
         .skill-item {
             background: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            border-left: 4px solid #cbd5e1;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            padding: 18px 25px;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid #cbd5e1;
             font-weight: 500;
             transition: all 0.3s ease;
-            cursor: default;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            color: #1e293b;
         }
 
         .skill-item:hover {
-            transform: translateX(5px);
-            border-left-color: var(--secondary-color);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transform: translateX(8px);
+            border-left-color: var(--construct-blue);
+            background-color: #fafafa;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.04);
         }
 
-        /* Experience */
+        /* Experience (Modern Card Style) */
         .job {
             background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            margin-bottom: 25px;
-            transition: all 0.3s ease;
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin-bottom: 30px;
             border: 1px solid #f1f5f9;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .job:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
         }
 
         .job-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            flex-wrap: wrap;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            gap: 15px;
         }
 
         .job-title {
-            font-size: 1.4rem;
-            color: var(--primary-color);
+            font-size: 1.5rem;
+            color: var(--primary-navy);
             font-weight: 700;
+            line-height: 1.2;
         }
 
         .job-date {
-            color: var(--secondary-color);
+            color: var(--construct-blue);
             font-weight: 600;
-            font-size: 0.95rem;
-            background: #eff6ff;
-            padding: 4px 12px;
+            font-size: 1rem;
+            white-space: nowrap;
+            background-color: #eff6ff;
+            padding: 6px 16px;
             border-radius: 20px;
         }
 
         .job-location {
             font-weight: 500;
-            color: var(--text-light);
-            margin-bottom: 15px;
+            color: var(--text-muted);
+            margin-bottom: 25px;
             display: block;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
 
         .job ul {
@@ -199,52 +258,74 @@
         }
 
         .job ul li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             position: relative;
-            padding-left: 24px;
-            color: #475569;
+            padding-left: 28px;
+            color: #334155;
+            font-weight: 400;
         }
 
+        /* Construction Bullet Point icon */
         .job ul li::before {
-            content: "▹";
-            color: var(--secondary-color);
-            font-weight: bold;
-            font-size: 1.2rem;
+            content: '';
             position: absolute;
             left: 0;
-            top: -2px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background-color: transparent;
+            border: 3px solid #cbd5e1;
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
+        }
+
+        .job:hover ul li::before {
+            border-color: var(--construct-blue);
+            background-color: var(--construct-blue);
         }
 
         /* Education */
         .edu-item {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
+            padding: 25px;
+            border-radius: 4px;
             margin-bottom: 15px;
-            border-left: 4px solid var(--primary-color);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid var(--primary-navy);
+            transition: all 0.3s ease;
         }
         
+        .edu-item:hover {
+            border-left-color: var(--safety-accent);
+            transform: translateX(5px);
+        }
+
         .edu-item strong {
             display: block;
-            font-size: 1.15rem;
-            color: var(--primary-color);
-            margin-bottom: 4px;
+            font-size: 1.25rem;
+            color: var(--primary-navy);
+            margin-bottom: 5px;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 40px 0;
-            color: var(--text-light);
-            font-size: 0.95rem;
+            padding: 50px 0;
+            color: var(--text-muted);
+            font-size: 1rem;
+            border-top: 1px solid #f1f5f9;
+            background-color: #f8fafc;
         }
 
-        @media (max-width: 600px) {
-            header { padding: 60px 0; }
-            header h1 { font-size: 2.4rem; }
-            .job-header { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .job-date { padding: 4px 0; background: transparent; }
+        /* ----- Responsive / Mobile Optimization ----- */
+        @media (max-width: 768px) {
+            header { padding: 80px 0; }
+            header h1 { font-size: 2.6rem; letter-spacing: 1px; }
+            section { padding: 60px 0; }
+            .job { padding: 25px; }
+            .job-header { flex-direction: column; gap: 8px; }
+            .job-date { padding: 0; background: transparent; color: var(--construct-blue); }
+            h3 { font-size: 1.7rem; }
         }
     </style>
 </head>
@@ -255,7 +336,7 @@
             <h1>SELIN PATEL</h1>
             <h2>Commercial Drywall Estimator</h2>
             <div class="contact-info">
-                <a href="mailto:selinpatel1998@gmail.com">Contact Me</a>
+                <a href="mailto:selinpatel1998@gmail.com">Request Proposal</a>
             </div>
         </div>
     </header>
@@ -352,7 +433,9 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Selin Patel. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2026 Selin Patel. Commercial Drywall Estimating Services.</p>
+        </div>
     </footer>
 
 </body>
