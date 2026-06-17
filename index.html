@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selin Patel | Commercial Drywall Estimator</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
         :root {
-            --primary-color: #1e293b; /* Slate Dark */
-            --secondary-color: #3b82f6; /* Professional Blue */
-            --bg-color: #f8fafc; /* Light Gray Background */
+            --primary-color: #0f172a; /* Deeper Slate */
+            --secondary-color: #3b82f6; /* Bright Professional Blue */
+            --bg-color: #f8fafc; /* Very Light Blue-Gray */
             --text-main: #334155;
             --text-light: #64748b;
         }
@@ -17,13 +19,17 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         .container {
@@ -32,60 +38,90 @@
             padding: 0 20px;
         }
 
+        /* Fade In Animation */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* Header / Hero Section */
         header {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1e293b 100%);
             color: white;
-            padding: 60px 0;
+            padding: 80px 0;
             text-align: center;
             border-bottom: 5px solid var(--secondary-color);
+            animation: fadeInUp 0.8s ease-out;
         }
 
         header h1 {
-            font-size: 2.8rem;
+            font-size: 3rem;
+            font-weight: 700;
             margin-bottom: 10px;
-            letter-spacing: 1px;
+            letter-spacing: -0.5px;
         }
 
         header h2 {
-            font-size: 1.4rem;
-            font-weight: 400;
-            color: #cbd5e1;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: #94a3b8;
+            margin-bottom: 25px;
         }
 
         .contact-info a {
             color: white;
             text-decoration: none;
             font-size: 1.1rem;
-            border: 1px solid var(--secondary-color);
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: background 0.3s;
+            border: 2px solid var(--secondary-color);
+            padding: 10px 24px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
         .contact-info a:hover {
             background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
 
         /* Sections */
         section {
-            padding: 50px 0;
+            padding: 60px 0;
             border-bottom: 1px solid #e2e8f0;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0; /* Starts hidden for animation */
         }
+
+        section:nth-child(1) { animation-delay: 0.2s; }
+        section:nth-child(2) { animation-delay: 0.4s; }
+        section:nth-child(3) { animation-delay: 0.6s; }
+        section:nth-child(4) { animation-delay: 0.8s; }
 
         h3 {
             font-size: 1.8rem;
             color: var(--primary-color);
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            position: relative;
+        }
+
+        h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
         }
 
         /* Summary */
         .summary p {
-            font-size: 1.1rem;
-            text-align: justify;
+            font-size: 1.15rem;
+            color: #475569;
         }
 
         /* Skills Grid */
@@ -97,45 +133,64 @@
 
         .skill-item {
             background: white;
-            padding: 15px;
-            border-radius: 6px;
-            border-left: 4px solid var(--secondary-color);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #cbd5e1;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
             font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-item:hover {
+            transform: translateX(5px);
+            border-left-color: var(--secondary-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         /* Experience */
         .job {
             background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
             margin-bottom: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+        }
+
+        .job:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
         }
 
         .job-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             flex-wrap: wrap;
         }
 
         .job-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--primary-color);
-            font-weight: bold;
+            font-weight: 700;
         }
 
         .job-date {
-            color: var(--text-light);
+            color: var(--secondary-color);
             font-weight: 600;
+            font-size: 0.95rem;
+            background: #eff6ff;
+            padding: 4px 12px;
+            border-radius: 20px;
         }
 
         .job-location {
-            font-style: italic;
+            font-weight: 500;
             color: var(--text-light);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             display: block;
         }
 
@@ -144,42 +199,52 @@
         }
 
         .job ul li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             position: relative;
-            padding-left: 20px;
+            padding-left: 24px;
+            color: #475569;
         }
 
         .job ul li::before {
-            content: "•";
+            content: "▹";
             color: var(--secondary-color);
             font-weight: bold;
+            font-size: 1.2rem;
             position: absolute;
             left: 0;
+            top: -2px;
         }
 
         /* Education */
         .edu-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
             margin-bottom: 15px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
         
         .edu-item strong {
             display: block;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--primary-color);
+            margin-bottom: 4px;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 30px 0;
+            padding: 40px 0;
             color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         @media (max-width: 600px) {
-            header h1 { font-size: 2.2rem; }
-            .job-header { flex-direction: column; align-items: flex-start; }
-            .job-date { margin-top: 5px; }
+            header { padding: 60px 0; }
+            header h1 { font-size: 2.4rem; }
+            .job-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .job-date { padding: 4px 0; background: transparent; }
         }
     </style>
 </head>
@@ -190,7 +255,7 @@
             <h1>SELIN PATEL</h1>
             <h2>Commercial Drywall Estimator</h2>
             <div class="contact-info">
-                <a href="mailto:selinpatel1998@gmail.com">selinpatel1998@gmail.com</a>
+                <a href="mailto:selinpatel1998@gmail.com">Contact Me</a>
             </div>
         </div>
     </header>
@@ -205,13 +270,13 @@
         <section class="skills">
             <h3>Core Skills</h3>
             <div class="skills-grid">
-                <div class="skill-item">Division 9 Estimating (Drywall, Metal Framing, ACT, Insulation)</div>
+                <div class="skill-item">Division 9 Estimating</div>
                 <div class="skill-item">Quantity Takeoffs & Cost Estimation</div>
-                <div class="skill-item">On-Screen Takeoff (OST), Quick Bid, BuzzBid</div>
+                <div class="skill-item">On-Screen Takeoff, Quick Bid, BuzzBid</div>
                 <div class="skill-item">Labor Costing & Production Rates</div>
-                <div class="skill-item">Bid Management, RFIs, Addenda, Alternates</div>
-                <div class="skill-item">Construction Drawings & Specs Analysis</div>
-                <div class="skill-item">Vendor Pricing & Subcontractor Coordination</div>
+                <div class="skill-item">Bid Management & RFIs</div>
+                <div class="skill-item">Construction Drawings & Specs</div>
+                <div class="skill-item">Vendor Pricing & Coordination</div>
                 <div class="skill-item">Budget Tracking & Cost Control</div>
                 <div class="skill-item">Microsoft Excel</div>
             </div>
