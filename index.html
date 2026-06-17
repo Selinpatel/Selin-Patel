@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selin Patel | Commercial Drywall Estimator</title>
+    <style>
+        :root {
+            --primary-color: #1e293b; /* Slate Dark */
+            --secondary-color: #3b82f6; /* Professional Blue */
+            --bg-color: #f8fafc; /* Light Gray Background */
+            --text-main: #334155;
+            --text-light: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header / Hero Section */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary-color);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        header h2 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border: 1px solid var(--secondary-color);
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .contact-info a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Sections */
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Summary */
+        .summary p {
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--secondary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            font-weight: 500;
+        }
+
+        /* Experience */
+        .job {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .job-date {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .job-location {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .job ul {
+            list-style-type: none;
+        }
+
+        .job ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .job ul li::before {
+            content: "•";
+            color: var(--secondary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Education */
+        .edu-item {
+            margin-bottom: 15px;
+        }
+        
+        .edu-item strong {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.2rem; }
+            .job-header { flex-direction: column; align-items: flex-start; }
+            .job-date { margin-top: 5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>SELIN PATEL</h1>
+            <h2>Commercial Drywall Estimator</h2>
+            <div class="contact-info">
+                <a href="mailto:selinpatel1998@gmail.com">selinpatel1998@gmail.com</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section class="summary">
+            <h3>Professional Summary</h3>
+            <p>Commercial Drywall Estimator with 2+ years of experience in Division 9 scopes, including drywall, metal framing, insulation, ACT, and finishes. Proven ability to perform accurate quantity takeoffs, prepare competitive bids, and manage multiple projects in fast-paced environments. Experienced with On-Screen Takeoff, Quick Bid, and BuzzBid, with strong knowledge of construction drawings, specifications, and bid processes. Background in both estimating and field coordination, ensuring practical and cost-effective project execution.</p>
+        </section>
+
+        <section class="skills">
+            <h3>Core Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-item">Division 9 Estimating (Drywall, Metal Framing, ACT, Insulation)</div>
+                <div class="skill-item">Quantity Takeoffs & Cost Estimation</div>
+                <div class="skill-item">On-Screen Takeoff (OST), Quick Bid, BuzzBid</div>
+                <div class="skill-item">Labor Costing & Production Rates</div>
+                <div class="skill-item">Bid Management, RFIs, Addenda, Alternates</div>
+                <div class="skill-item">Construction Drawings & Specs Analysis</div>
+                <div class="skill-item">Vendor Pricing & Subcontractor Coordination</div>
+                <div class="skill-item">Budget Tracking & Cost Control</div>
+                <div class="skill-item">Microsoft Excel</div>
+            </div>
+        </section>
+
+        <section class="experience">
+            <h3>Professional Experience</h3>
+            
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Drywall Estimator</span>
+                    <span class="job-date">Jan 2025 – Jan 2026</span>
+                </div>
+                <span class="job-location">Florida</span>
+                <ul>
+                    <li>Prepared detailed quantity takeoffs for drywall, metal framing, insulation, ACT, stucco, and painting scopes</li>
+                    <li>Developed accurate cost estimates using OST, Quick Bid, and BuzzBid</li>
+                    <li>Managed multiple bids simultaneously under tight deadlines</li>
+                    <li>Reviewed construction drawings and specifications to define complete project scope</li>
+                    <li>Generated and tracked RFIs, addenda, and scope revisions during bidding process</li>
+                    <li>Applied labor production rates to ensure consistent and competitive pricing</li>
+                    <li>Assisted in bid submissions and scope clarifications with project teams</li>
+                    <li>Tracked estimated vs. actual costs to support project cost control</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Flooring Estimator</span>
+                    <span class="job-date">Apr 2023 – Oct 2024</span>
+                </div>
+                <span class="job-location">Opler Floorings, Florida</span>
+                <ul>
+                    <li>Prepared material takeoffs and cost estimates for commercial flooring projects</li>
+                    <li>Coordinated with vendors and suppliers to obtain competitive pricing</li>
+                    <li>Maintained organized documentation of bids, quotes, and revisions</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Project Manager</span>
+                    <span class="job-date">Jan 2021 – Jan 2023</span>
+                </div>
+                <span class="job-location">Samruddhi Builders, India</span>
+                <ul>
+                    <li>Managed daily site operations ensuring work aligned with drawings and specifications</li>
+                    <li>Supervised subcontractors, labor, and site engineers</li>
+                    <li>Coordinated material procurement and tracked project progress</li>
+                    <li>Reviewed BOQs and drawings to support project execution</li>
+                    <li>Monitored costs, verified subcontractor billing, and controlled expenses</li>
+                    <li>Maintained project documentation, reports, and compliance standards</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="education">
+            <h3>Education & Certifications</h3>
+            <div class="edu-item">
+                <strong>MBA in Finance</strong>
+                Indira Institute of Management, India
+            </div>
+            <div class="edu-item">
+                <strong>B.Com</strong>
+                BYK College of Commerce, India
+            </div>
+            <div class="edu-item">
+                <strong>OSHA 30-Hour Construction Safety</strong>
+                Certification
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Selin Patel. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
